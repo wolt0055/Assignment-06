@@ -1,0 +1,29 @@
+h1 {
+  text-align: center;
+  color: orange;
+  font-size: 3rem;
+
+}
+
+button {
+  color: red;
+  font-size: 2rem;
+  padding: 2rem;
+  background-color: pink;
+  text-align: center;
+  transition-duration: .4s;
+  border-radius: 5%;
+}
+
+button:hover {
+  background-color: red;
+  color: pink;
+}
+
+ul {
+  text-indent: .2rem;
+}
+
+li {
+  text-indent: .2rem;
+}
