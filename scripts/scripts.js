@@ -1,5 +1,7 @@
 var response = null;
+var resp = null;
 var cityLocation = null;
+var newPos = {};
 // const container = document.getElementById('container')
 // let locations = [
 //   {lat: 51.5074, lng:0.1278},
@@ -18,16 +20,17 @@ function yourLoc(){
 
   // document.getElementById('container').appendChild(li);
 
-//   document.getElementById("container").appendChild(ul);
+  // document.getElementById("container").appendChild(ul);
 //   //for each object in locations list, call the API
-//   for(let i = 0; i<locations.length; i++){
-//     getLocation(locations[i]);
-//   }
+  // for(let i = 0; i<locations.length; i++){
+    // getLocation(locations[i]);
+  // }
 }
 
 //callback for succcessfully getting location from user's browser
 function geolocSuccess(position){
-  const newPos = {lat:position.coords.latitude, lng:position.coords.longitude};
+//const = newPos
+  newPos = {lat:position.coords.latitude, lng:position.coords.longitude};
   getLocation(newPos);
 }
 //
@@ -38,11 +41,15 @@ function geolocError(){
 
 //API call onload callback function
 function onloadFunc1(){
-  const resp = JSON.parse(this.response);
-  console.log(resp);
+  resp = JSON.parse(this.response);
+  // console.log(resp);
   if(resp.results.length>0){
 //     //if tehre are results print results format to page
-    printListItem(resp.results[0]);
+    printListItem("latitude is " + resp.results[0].geometry.location.lat);
+    printListItem("longitude is " + resp.results[0].geometry.location.lng);
+    // console.log(resp.results[3].address_components[1].long_name);
+    // console.log("It'll work sometimes!");
+    weatherUpdate(resp.results[3].address_components[1].long_name);
   } else{printListItem("sorry no results found");}
   }
 //
@@ -110,7 +117,7 @@ function onloadFunc(){
   console.log("great success");
   //in the onload we want to check response.results.length > 0
   response = JSON.parse(this.response)
-  console.log(response);
+  // console.log(response);
   // console.log(response.temp);
     if(this.response.length > 0){
       // console.log("length greater than 0");
